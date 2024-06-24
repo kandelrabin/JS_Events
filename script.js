@@ -16,12 +16,21 @@ todoForm.addEventListener("submit", (event) => {
     deleteButton.textContent = "delete";
     completedButton = document.createElement("button");
     completedButton.textContent = "mark as complete";
+    let completedText = document.createElement("span");
+    newListItem.appendChild(completedButton);
     newListItem.appendChild(deleteButton);
+    newListItem.appendChild(completedText);
     list.appendChild(newListItem);
 
     deleteButton.addEventListener("click", () => {
         deleteElement(list, newListItem);
     });
+
+    completedButton.addEventListener("click", () => {
+        completedText.innerText = "Completed!";
+    })
+
+
     
 });
 
