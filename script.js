@@ -13,34 +13,32 @@ todoForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const newListItem = document.createElement("li");
     newListItem.innerText = event.target["new-todo"].value;
-    deleteButton = document.createElement("button");
+
+    const deleteButton = document.createElement("button");
     deleteButton.textContent = "delete";
-    completedButton = document.createElement("button");
+    const completedButton = document.createElement("button");
     completedButton.textContent = "mark as complete";
-    let completedText = document.createElement("span");
+    const completedText = document.createElement("span");
+
     newListItem.appendChild(completedButton);
     newListItem.appendChild(deleteButton);
     newListItem.appendChild(completedText);
     list.appendChild(newListItem);
 
     deleteButton.addEventListener("click", () => {
-        deleteElement(list, newListItem);
+        deleteElement(newListItem);
     });
 
     completedButton.addEventListener("click", () => {
         completedText.innerText = "Completed!";
         newListItem.style.color = "grey";
         completedList.appendChild(newListItem);
-        deleteButton.addEventListener("click", () => {
-            deleteElement(completedList, newListItem);
-        });
     });
 
-
-    
+   
 });
 
-const deleteElement = (listToDeleteFrom, itemToDelete) => {
-    listToDeleteFrom.removeChild(itemToDelete);
+const deleteElement = (itemToDelete) => {
+    itemToDelete.parentNode.removeChild(itemToDelete);
 };
 
