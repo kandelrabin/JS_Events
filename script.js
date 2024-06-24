@@ -1,5 +1,12 @@
 const todoForm = document.querySelector("#todo-form");
 const list = document.querySelector("#list");
+const showDateButton = document.querySelector("#date-button");
+const textOutput = document.querySelector("#text-output");
+
+showDateButton.addEventListener("click", (event) => {
+    const date = new Date().toLocaleDateString();
+    textOutput.innerText = date;
+})
 
 todoForm.addEventListener("submit", (event) => {
     event.preventDefault();
