@@ -2,6 +2,7 @@ const todoForm = document.querySelector("#todo-form");
 const list = document.querySelector("#list");
 const showDateButton = document.querySelector("#date-button");
 const textOutput = document.querySelector("#text-output");
+const completedList = document.querySelector("#completed-list");
 
 showDateButton.addEventListener("click", () => {
     const date = new Date().toLocaleDateString();
@@ -28,7 +29,12 @@ todoForm.addEventListener("submit", (event) => {
 
     completedButton.addEventListener("click", () => {
         completedText.innerText = "Completed!";
-    })
+        newListItem.style.color = "grey";
+        completedList.appendChild(newListItem);
+        deleteButton.addEventListener("click", () => {
+            deleteElement(completedList, newListItem);
+        });
+    });
 
 
     
